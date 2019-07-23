@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>50f9f299-c725-453f-b533-6295b73a0f04</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>PlayFabBuddy.Economy</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IInventoryService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InventoryItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InventoryService.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>PlayFabBuddy.Economy</id>
+		<version>2.0.0</version>
+		<title>PlayFabBuddy.Economy</title>
+		<authors>dmanning23</authors>
+		<owners>dmanning23</owners>
+		<projectUrl>https://github.com/dmanning23/PlayFabBuddy.Economy</projectUrl>
+		<licenseUrl>https://github.com/dmanning23/PlayFabBuddy.Economy/blob/master/LICENSE.txt</licenseUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Economy wrapper around the PlayFab Xamarin client SDK</description>
+		<releaseNotes />
+		<copyright>Copyright 2016</copyright>
+		<tags>android, ios, windows universal, monogame, xamarin</tags>
+		<dependencies>
+
+			<!--Xamarin.Android-->
+			<group targetFramework="MonoAndroid10">
+				<dependency id="PlayFabBuddy.Auth" version="2.0"/>
+			</group>
+
+			<!--Xamarin.iOS Unified-->
+			<group targetFramework="Xamarin.iOS10">
+				<dependency id="PlayFabBuddy.Auth" version="2.0"/>
+			</group>
+
+
+			<group targetFramework="net451">
+				<dependency id="PlayFabBuddy.Auth" version="2.0"/>
+			</group>
+
+		</dependencies>
+	</metadata>
+	<files>
+
+		<!--Xamarin.Android-->
+		<file src="PlayFabBuddy.Economy.Android\bin\Release\PlayFabBuddy.Economy.Android.pdb" target="lib\MonoAndroid10\PlayFabBuddy.Economy.Android.pdb" />
+		<file src="PlayFabBuddy.Economy.Android\bin\Release\PlayFabBuddy.Economy.Android.dll" target="lib\MonoAndroid10\PlayFabBuddy.Economy.Android.dll" />
+
+		<!--Xamarin.iOS Unified-->
+		<file src="PlayFabBuddy.Economy.iOS\bin\Release\PlayFabBuddy.Economy.iOS.pdb" target="lib\Xamarin.iOS10\PlayFabBuddy.Economy.iOS.pdb" />
+		<file src="PlayFabBuddy.Economy.iOS\bin\Release\PlayFabBuddy.Economy.iOS.dll" target="lib\Xamarin.iOS10\PlayFabBuddy.Economy.iOS.dll" />
+		
+		<!--WindowsDX-->
+		<file src="PlayFabBuddy.Economy.WindowsDX\bin\Release\PlayFabBuddy.Economy.WindowsDX.pdb" target="lib\net451\PlayFabBuddy.Economy.WindowsDX.pdb" />
+		<file src="PlayFabBuddy.Economy.WindowsDX\bin\Release\PlayFabBuddy.Economy.WindowsDX.dll" target="lib\net451\PlayFabBuddy.Economy.WindowsDX.dll" />
+
+	</files>
+</package>

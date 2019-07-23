@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PlayFabBuddy.Economy.SharedProject", "PlayFabBuddy.Economy.SharedProject\PlayFabBuddy.Economy.SharedProject.shproj", "{50F9F299-C725-453F-B533-6295B73A0F04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.Economy.WindowsDX", "PlayFabBuddy.Economy.WindowsDX\PlayFabBuddy.Economy.WindowsDX.csproj", "{506B3C31-0EBF-4EAF-AF5F-B1F34E39D294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.Economy.Android", "PlayFabBuddy.Economy.Android\PlayFabBuddy.Economy.Android.csproj", "{4399AA3D-7D7D-4F30-B0D8-5AB836EC4437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabBuddy.Economy.iOS", "PlayFabBuddy.Economy.iOS\PlayFabBuddy.Economy.iOS.csproj", "{0298A004-9B47-4168-A967-B0285444D2D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{093EF6FF-7948-420F-89C4-FA9FD784AF5E}"
+	ProjectSection(SolutionItems) = preProject
+		buildNugetPackages.ps1 = buildNugetPackages.ps1
+		PlayFabBuddy.Economy.nuspec = PlayFabBuddy.Economy.nuspec
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PlayFabBuddy.Economy.SharedProject\PlayFabBuddy.Economy.SharedProject.projitems*{0298a004-9b47-4168-a967-b0285444d2d2}*SharedItemsImports = 4
+		PlayFabBuddy.Economy.SharedProject\PlayFabBuddy.Economy.SharedProject.projitems*{4399aa3d-7d7d-4f30-b0d8-5ab836ec4437}*SharedItemsImports = 4
+		PlayFabBuddy.Economy.SharedProject\PlayFabBuddy.Economy.SharedProject.projitems*{506b3c31-0ebf-4eaf-af5f-b1f34e39d294}*SharedItemsImports = 4
+		PlayFabBuddy.Economy.SharedProject\PlayFabBuddy.Economy.SharedProject.projitems*{50f9f299-c725-453f-b533-6295b73a0f04}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{506B3C31-0EBF-4EAF-AF5F-B1F34E39D294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506B3C31-0EBF-4EAF-AF5F-B1F34E39D294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506B3C31-0EBF-4EAF-AF5F-B1F34E39D294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506B3C31-0EBF-4EAF-AF5F-B1F34E39D294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4399AA3D-7D7D-4F30-B0D8-5AB836EC4437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4399AA3D-7D7D-4F30-B0D8-5AB836EC4437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4399AA3D-7D7D-4F30-B0D8-5AB836EC4437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4399AA3D-7D7D-4F30-B0D8-5AB836EC4437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0298A004-9B47-4168-A967-B0285444D2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0298A004-9B47-4168-A967-B0285444D2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0298A004-9B47-4168-A967-B0285444D2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0298A004-9B47-4168-A967-B0285444D2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {546C8246-7ECF-415B-8F3D-AD46F5D27570}
+	EndGlobalSection
+EndGlobal
