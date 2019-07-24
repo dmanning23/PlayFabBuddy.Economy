@@ -1,4 +1,5 @@
-﻿
+﻿using PlayFab.ClientModels;
+
 namespace PlayFabBuddy.Economy
 {
 	public class InventoryItem
@@ -33,5 +34,15 @@ namespace PlayFabBuddy.Economy
 		/// This is used by the backend.
 		/// </summary>
 		public string ItemInstanceId { get; set; }
+
+		public InventoryItem(ItemInstance inventoryItem)
+		{
+			Id = inventoryItem.ItemId;
+			DisplayName = inventoryItem.DisplayName;
+			NumUses = inventoryItem.RemainingUses;
+			Cost = (int)inventoryItem.UnitPrice;
+			Currency = inventoryItem.UnitCurrency;
+			ItemInstanceId = inventoryItem.ItemInstanceId;
+		}
 	}
 }

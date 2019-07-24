@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace PlayFabBuddy.Economy
 {
-	public interface IInventoryService
+	public interface IPlayFabEconomyService
 	{
 		/// <summary>
 		/// A cache of the user's inventory.
@@ -40,7 +40,7 @@ namespace PlayFabBuddy.Economy
 		/// </summary>
 		/// <param name="itemId"></param>
 		/// <returns>Contains the error message if an error occurred, otherwise will be empty.</returns>
-		Task<string> PurchaseItem(string itemId);
+		Task<string> PurchaseItem(string itemId, int cost, string currency);
 
 		/// <summary>
 		/// Use an item
@@ -49,5 +49,7 @@ namespace PlayFabBuddy.Economy
 		/// <param name="count"></param>
 		/// <returns>Contains the error message if an error occurred, otherwise will be empty.</returns>
 		Task<string> ConsumeItem(string itemId, int count);
+
+		Task<List<StoreItem>> GetStore(string storeId);
 	}
 }

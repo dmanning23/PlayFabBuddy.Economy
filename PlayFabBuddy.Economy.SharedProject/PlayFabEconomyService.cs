@@ -4,9 +4,9 @@ using PlayFabBuddyLib.Auth;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PlayFabBuddy.Economy.SharedProject
+namespace PlayFabBuddy.Economy
 {
-	public class InventoryService : IInventoryService
+	public class PlayFabEconomyService : IPlayFabEconomyService
 	{
 		#region Properties
 
@@ -21,9 +21,7 @@ namespace PlayFabBuddy.Economy.SharedProject
 
 		#region Methods
 
-		#endregion //Methods
-
-		public InventoryService(IPlayFabClient playfab, IPlayFabAuthService auth)
+		public PlayFabEconomyService(IPlayFabClient playfab, IPlayFabAuthService auth)
 		{
 			Inventory = new Dictionary<string, InventoryItem>();
 			Wallet = new Dictionary<string, int>();
@@ -72,19 +70,13 @@ namespace PlayFabBuddy.Economy.SharedProject
 			return result.Error?.ErrorMessage ?? string.Empty;
 		}
 
-		public async Task<string> PurchaseItem(string itemId)
+		public async Task<string> PurchaseItem(string itemId, int cost, string currency)
 		{
-			if (!Inventory.ContainsKey(itemId))
-			{
-				return $"Error: itemId {itemId} not found in the inventory";
-			}
-			var item = Inventory[itemId];
-
 			var result = await _playfab.PurchaseItemAsync(new PurchaseItemRequest()
 			{
-				ItemId = item.Id,
-				Price = item.Cost,
-				VirtualCurrency = item.Currency
+				ItemId = itemId,
+				Price = cost,
+				VirtualCurrency = currency
 			});
 
 			if (null == result.Error)
@@ -96,9 +88,9 @@ namespace PlayFabBuddy.Economy.SharedProject
 				}
 
 				//update the wallet
-				if (Wallet.ContainsKey(item.Currency))
+				if (Wallet.ContainsKey(currency))
 				{
-					Wallet[item.Currency] = Wallet[item.Currency] - item.Cost;
+					Wallet[currency] = Wallet[currency] - cost;
 				}
 			}
 
@@ -137,16 +129,30 @@ namespace PlayFabBuddy.Economy.SharedProject
 			else
 			{
 				//Add the inventory item
-				Inventory[inventoryItem.ItemId] = new InventoryItem
-				{
-					Id = inventoryItem.ItemId,
-					DisplayName = inventoryItem.DisplayName,
-					NumUses = inventoryItem.RemainingUses,
-					Cost = (int)inventoryItem.UnitPrice,
-					Currency = inventoryItem.UnitCurrency,
-					ItemInstanceId = inventoryItem.ItemInstanceId,
-				};
+				Inventory[inventoryItem.ItemId] = new InventoryItem(inventoryItem);
 			}
 		}
+
+		public async Task<List<StoreItem>> GetStore(string storeId)
+		{
+			var result = await _playfab.GetStoreItemsAsync(new GetStoreItemsRequest()
+			{
+				StoreId = storeId,
+			});
+
+			var storeItems = new List<PlayFabBuddy.Economy.StoreItem>();
+
+			if (null == result.Error)
+			{
+				foreach (var item in result.Result.Store)
+				{
+					storeItems.Add(new PlayFabBuddy.Economy.StoreItem(item));
+				}
+			}
+
+			return storeItems;
+		}
+
+		#endregion //Methods
 	}
 }
