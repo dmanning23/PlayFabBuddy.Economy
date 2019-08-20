@@ -51,5 +51,7 @@ namespace PlayFabBuddy.Economy
 		Task<string> ConsumeItem(string itemId, int count);
 
 		Task<List<StoreItem>> GetStore(string storeId);
+
+		Task<List<CatalogItem>> GetCatalog(string catalogId = "1.0");
 	}
 }

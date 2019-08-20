@@ -1,6 +1,4 @@
-﻿
-using PlayFab.ClientModels;
-using System.Linq;
+﻿using System.Linq;
 
 namespace PlayFabBuddy.Economy
 {
@@ -20,6 +18,10 @@ namespace PlayFabBuddy.Economy
 		/// What type of virtual currency is used to buy this item
 		/// </summary>
 		public string Currency { get; set; }
+
+		protected StoreItem()
+		{
+		}
 
 		public StoreItem(PlayFab.ClientModels.StoreItem inventoryItem)
 		{

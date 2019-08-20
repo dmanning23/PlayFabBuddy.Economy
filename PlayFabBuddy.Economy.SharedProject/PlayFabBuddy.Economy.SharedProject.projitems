@@ -9,6 +9,7 @@
     <Import_RootNamespace>PlayFabBuddy.Economy</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CatalogItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StoreItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPlayFabEconomyService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InventoryItem.cs" />

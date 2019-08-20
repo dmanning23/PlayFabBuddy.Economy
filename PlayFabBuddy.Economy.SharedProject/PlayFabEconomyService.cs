@@ -28,12 +28,19 @@ namespace PlayFabBuddy.Economy
 
 			_playfab = playfab;
 			_auth = auth;
+
+			_auth.OnLogout += Auth_OnLogout;
+		}
+
+		private void Auth_OnLogout(object sender, System.EventArgs e)
+		{
+			Inventory = new Dictionary<string, InventoryItem>();
+			Wallet = new Dictionary<string, int>();
 		}
 
 		public async Task<string> GetInventory()
 		{
-			var result = await _playfab.GetUserInventoryAsync(new GetUserInventoryRequest() {
-			});
+			var result = await _playfab.GetUserInventoryAsync(new GetUserInventoryRequest());
 
 			if (null == result.Error)
 			{
@@ -151,6 +158,26 @@ namespace PlayFabBuddy.Economy
 			}
 
 			return storeItems;
+		}
+
+		public async Task<List<CatalogItem>> GetCatalog(string catalogId = "1.0")
+		{
+			var result = await _playfab.GetCatalogItemsAsync(new GetCatalogItemsRequest()
+			{
+				CatalogVersion = catalogId,
+			});
+
+			var items = new List<PlayFabBuddy.Economy.CatalogItem>();
+
+			if (null == result.Error)
+			{
+				foreach (var item in result.Result.Catalog)
+				{
+					items.Add(new PlayFabBuddy.Economy.CatalogItem(item));
+				}
+			}
+
+			return items;
 		}
 
 		#endregion //Methods

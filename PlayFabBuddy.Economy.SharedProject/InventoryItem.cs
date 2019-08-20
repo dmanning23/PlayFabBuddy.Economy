@@ -35,6 +35,8 @@ namespace PlayFabBuddy.Economy
 		/// </summary>
 		public string ItemInstanceId { get; set; }
 
+		public string ItemClass { get; set; }
+
 		public InventoryItem(ItemInstance inventoryItem)
 		{
 			Id = inventoryItem.ItemId;
@@ -43,6 +45,7 @@ namespace PlayFabBuddy.Economy
 			Cost = (int)inventoryItem.UnitPrice;
 			Currency = inventoryItem.UnitCurrency;
 			ItemInstanceId = inventoryItem.ItemInstanceId;
+			ItemClass = inventoryItem.ItemClass;
 		}
 	}
 }
