@@ -14,5 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)IPlayFabEconomyService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InventoryItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PlayFabEconomyService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WalletEventArgs.cs" />
   </ItemGroup>
 </Project>

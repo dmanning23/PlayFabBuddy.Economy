@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PlayFabBuddy.Economy
 {
 	public interface IPlayFabEconomyService
 	{
+		event EventHandler<WalletEventArgs> OnCurrencyChanged;
+
 		/// <summary>
 		/// A cache of the user's inventory.
 		/// Key is item id

@@ -1,6 +1,7 @@
 ﻿using PlayFab.ClientModels;
 using PlayFabBuddyLib;
 using PlayFabBuddyLib.Auth;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,6 +10,8 @@ namespace PlayFabBuddy.Economy
 	public class PlayFabEconomyService : IPlayFabEconomyService
 	{
 		#region Properties
+
+		public event EventHandler<WalletEventArgs> OnCurrencyChanged;
 
 		public Dictionary<string, InventoryItem> Inventory { get; private set; }
 
@@ -72,6 +75,11 @@ namespace PlayFabBuddy.Economy
 			{
 				//update the wallet
 				Wallet[result.Result.VirtualCurrency] = result.Result.Balance;
+
+				if (null != OnCurrencyChanged)
+				{
+					OnCurrencyChanged(this, new WalletEventArgs(currencyCode, result.Result.Balance));
+				}
 			}
 
 			return result.Error?.ErrorMessage ?? string.Empty;
@@ -98,6 +106,11 @@ namespace PlayFabBuddy.Economy
 				if (Wallet.ContainsKey(currency))
 				{
 					Wallet[currency] = Wallet[currency] - cost;
+
+					if (null != OnCurrencyChanged)
+					{
+						OnCurrencyChanged(this, new WalletEventArgs(currency, Wallet[currency]));
+					}
 				}
 			}
 
