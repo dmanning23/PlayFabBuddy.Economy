@@ -20,6 +20,8 @@ namespace PlayFabBuddy.Economy
 		IPlayFabClient _playfab;
 		IPlayFabAuthService _auth;
 
+		object _lock = new object();
+
 		#endregion //Properties
 
 		#region Methods
@@ -128,7 +130,7 @@ namespace PlayFabBuddy.Economy
 			var result = await _playfab.ConsumeItemAsync(new ConsumeItemRequest()
 			{
 				ItemInstanceId = item.ItemInstanceId,
-				ConsumeCount= count
+				ConsumeCount = count
 			});
 
 			if (null == result.Error)
@@ -142,14 +144,17 @@ namespace PlayFabBuddy.Economy
 
 		private void UpdateCachedItem(ItemInstance inventoryItem)
 		{
-			if (Inventory.TryGetValue(inventoryItem.ItemId, out InventoryItem cachedInventoryItem))
+			lock (_lock)
 			{
-				cachedInventoryItem.NumUses = inventoryItem.RemainingUses;
-			}
-			else
-			{
-				//Add the inventory item
-				Inventory[inventoryItem.ItemId] = new InventoryItem(inventoryItem);
+				if (Inventory.TryGetValue(inventoryItem.ItemId, out InventoryItem cachedInventoryItem))
+				{
+					cachedInventoryItem.NumUses = inventoryItem.RemainingUses;
+				}
+				else
+				{
+					//Add the inventory item
+					Inventory[inventoryItem.ItemId] = new InventoryItem(inventoryItem);
+				}
 			}
 		}
 
